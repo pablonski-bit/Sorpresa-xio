@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Xio ❤️</title>
+    <style>
+        /* Decoración tipo romance con fondo de rosas y flores */
+        body {
+            background-color: #ffe6eb;
+            /* Usamos un SVG codificado para crear un patrón de rosas y flores de cerezo */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Ctext x='15' y='40' font-size='25' opacity='0.6'%3E🌹%3C/text%3E%3Ctext x='75' y='100' font-size='25' opacity='0.6'%3E🌸%3C/text%3E%3C/svg%3E");
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            color: #b3003b;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(255, 179, 198, 0.8);
+            font-family: 'Georgia', serif;
+            font-style: italic;
+        }
+
+        .contenedor {
+            max-width: 600px;
+            margin: 20px auto;
+            /* Fondo blanco semitransparente para que el texto resalte sobre las flores */
+            background: rgba(255, 255, 255, 0.92);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(179, 0, 59, 0.2);
+            border: 2px solid #ffccd5;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            border: 5px solid #ff99aa;
+            margin: 15px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        p {
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        /* Estilos para los botones interactivos */
+        .btn {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.2em;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(255, 77, 109, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #c9184a;
+        }
+
+        /* Animaciones para ir leyendo de arriba hacia abajo */
+        .oculto {
+            display: none;
+            opacity: 0;
+        }
+
+        .visible {
+            display: block;
+            animation: aparecer 1s ease-in-out forwards;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Etiqueta de música -->
+    <audio id="musicaFondo" loop>
+        <source src="Cigarettes After Sex - Sweet (sub español lyrics).mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Botón inicial para que los navegadores permitan reproducir la música -->
+    <div class="contenedor" id="pantallaInicio">
+        <h2>Hola mi niña bonita 🌸</h2>
+        <p>Tengo una sorpresa para ti. Toca el botón para empezar.</p>
+        <button class="btn" onclick="iniciarSorpresa()">💖 Comenzar 💖</button>
+    </div>
+
+    <!-- Contenido principal que se irá revelando -->
+    <div id="historia" class="oculto">
+        
+        <!-- PARTE 1 -->
+        <div class="contenedor">
+            <h1>Este amor que tengo hacia a ti mi xio es muy enorme</h1>
+            <img src="IMG_20251217_203624.jpg" alt="Foto de nosotros">
+        </div>
+
+        <!-- PARTE 2: La Carta -->
+        <div class="contenedor" id="seccionCarta">
+            <p>Te escribí algo especial...</p>
+            <button class="btn" id="btnCarta" onclick="abrirCarta()">💌 Presiona para abrir la carta 💌</button>
+            
+            <div id="contenidoCarta" class="oculto">
+                <img src="yo y xio.png" alt="Dibujo de nosotros">
+                <p>Lo hice con mis propias manitos, quise dibujar un pequeño recuerdo de lo que vivimos. Faltaron muchos más momentos hermosos por plasmar, pero cada trazo está lleno de todo el amor que te tengo. Eres mi mayor inspiración y quiero seguir dibujando nuestra historia juntos, llenándola de colores y sonrisas. Te quelo mucho, muchísimo, más de lo que las palabras pueden expresar ❤️✨</p>
+                <br>
+                <button class="btn" onclick="mostrarSiguiente()">Siguiente ➔</button>
+            </div>
+        </div>
+
+        <!-- PARTE 3: Siguiente flecha y final -->
+        <div class="contenedor oculto" id="seccionFinal">
+            <img src="abasho.jpeg" alt="Más recuerdos juntos">
+            <p>Gachas por llegar a mi vida xiomi te quelo demasiado, es muy bonito pasarla contigo, llenas mis días de una luz especial. Cada momento, cada risa y cada mirada tuya es mi parte favorita del día. Eres mi refugio, mi mayor alegría y la casualidad más hermosa que me pudo pasar. Prometo seguir cuidándote, haciéndote sonreír y demostrándote lo mucho que vales para mí. Eres mi persona ideal, nunca lo olvides. ✨💞</p>
+        </div>
+
+    </div>
+
+    <!-- Código interactivo -->
+    <script>
+        function iniciarSorpresa() {
+            // Reproducir música
+            document.getElementById('musicaFondo').play();
+            
+            // Ocultar inicio y mostrar la primera parte
+            document.getElementById('pantallaInicio').style.display = 'none';
+            document.getElementById('historia').classList.remove('oculto');
+            document.getElementById('historia').classList.add('visible');
+        }
+
+        function abrirCarta() {
+            // Ocultar botón de carta y mostrar el dibujo
+            document.getElementById('btnCarta').style.display = 'none';
+            document.getElementById('contenidoCarta').classList.remove('oculto');
+            document.getElementById('contenidoCarta').classList.add('visible');
+            
+            // Bajar la pantalla suavemente para ver el contenido nuevo
+            setTimeout(() => {
+                window.scrollBy({ top: 450, behavior: 'smooth' });
+            }, 100);
+        }
+
+        function mostrarSiguiente() {
+            // Ocultar el botón "Siguiente" una vez presionado
+            event.target.style.display = 'none';
+            
+            // Mostrar la última foto y el texto extra
+            document.getElementById('seccionFinal').classList.remove('oculto');
+            document.getElementById('seccionFinal').classList.add('visible');
+            
+            // Bajar hasta el final de la página
+            setTimeout(() => {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }, 100);
+        }
+    </script>
+</body>
+</html>
